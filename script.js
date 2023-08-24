@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const newInput = document.createElement("input");
         newInput.setAttribute("type", "text");
         newInput.setAttribute("name", `column-${addedColumnCount}`);
+        newInput.classList.add("column");
         columnContainer.appendChild(newInput);
     }
     });
