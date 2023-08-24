@@ -41,6 +41,10 @@ input {
     border: 2px solid black;
 }
 
+input.column {
+    margin: 15px 10px 15px 0px;
+}
+
 .column-explain {
     font-style: italic;
     margin: 8px 0px 16px 0px;
