@@ -1,0 +1,95 @@
+*{
+    font-family: sans-serif;
+    box-sizing: border-box;
+    background-color: lightgray;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+fieldset {
+    position: relative;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+h1.title {
+font-size: 48px;
+text-align: center;
+}
+
+h4 {
+    margin: 30px 0px 0px 0px;
+}
+
+h4.rows {
+    margin-top: 0;
+}
+
+input {
+    border: 2px solid black;
+}
+
+.column-explain {
+    font-style: italic;
+    margin: 8px 0px 16px 0px;
+}
+
+
+/* buttons */
+button {
+    color: black;
+    border: 1px solid black;
+}
+button:hover {
+    border-color: white;
+    color: white;
+    cursor: pointer;
+}
+
+button.remove {
+    background-color: red;
+    font-weight: 800;
+    padding: 2px 7px;
+    margin-left: 10px;
+}
+
+.tier-row {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+button.add-row {
+    background-color: green;
+    padding: 5px 10px;
+    font-weight: 500;
+}
+button.add-column {
+    background-color: green;
+    padding: 5px 10px;
+    font-weight: 500;
+}
+
+button.create-tierlist {
+    background-color: darkgray;
+    font-weight: 600;
+    padding: 20px 30px;
+    position: absolute;
+    right: 30%;
+    bottom: 50%;
+    font-size: 28px;
+    border-radius: 15px;
+    border: solid 3px;
+}

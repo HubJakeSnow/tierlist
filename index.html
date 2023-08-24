@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="title">Make A Tierlist</h1>
+    <form>
+        <fieldset>
+           <legend><h3>Tierlist Set-Up</h3></legend>
+           <h4 class="rows">Rows:</h4>
+            <ul id="rowList">
+                <li>
+                    <label for="row-1"></label>
+                    <input type="text" name="row-1" placeholder="S">
+                    <button class="remove">X</button>
+                </li> 
+                <li>
+                    <label for="row-2"></label>
+                    <input type="text" name="row-2" placeholder="A">
+                    <button class="remove">X</button>
+                </li>
+                <li>
+                    <label for="row-3"></label>
+                    <input type="text" name="row-3" placeholder="B">
+                    <button class="remove">X</button>
+                </li>
+                <li>
+                    <label for="row-4"></label>
+                    <input type="text" name="row-4" placeholder="C">
+                    <button class="remove">X</button>
+                </li>
+            </ul>
+            <button class="add-row">Add row</button>
+
+            <h4>Columns:</h4>
+            <div class="column-explain">For a default tierlist, with just one column, leave this part.</div>
+            <button class="add-column">Add column</button> <!-- Should add 2 columns on first click, then just one after that -->
+
+            <button class="create-tierlist">Create tierlist</button>
+        </fieldset>
+    </form>
+
+<script src="script.js"></script>
+</body>
+</html>
