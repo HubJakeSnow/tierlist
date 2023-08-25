@@ -3,9 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const addRowButton = document.querySelector(".add-row");
     const columnContainer = document.getElementById("columnContainer");
     const addColumnButton = document.querySelector(".add-column");
+    const resetButton = document.querySelector(".reset");
 
-    let currentRowNumber = 4; // Starts with the next row number
-    let addedColumnCount = 0; // Tracks the number of columns added
+    // Initialize row and column counts
+    let currentRowNumber = 4;
+    let addedColumnCount = 0;
 
     function getNextLabel() {
         return String.fromCharCode(65 + addedColumnCount);
@@ -15,14 +17,16 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             input.parentElement.remove();
             if (isColumn) {
-                addedColumnCount--; // Decrement addedColumnCount for columns
+                addedColumnCount--;
             }
         });
     }
 
+    // Add row button
     addRowButton.addEventListener("click", function (event) {
         event.preventDefault();
 
+        // Create a new row
         const newRow = document.createElement("li");
         currentRowNumber++;
 
@@ -32,15 +36,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const input = document.createElement("input");
         input.setAttribute("type", "text");
         input.setAttribute("name", `row-${currentRowNumber}`);
-        input.setAttribute("placeholder", getNextLabel()); // Get next label
+        input.setAttribute("placeholder", getNextLabel());
         if (currentRowNumber > 4) {
-            input.removeAttribute("placeholder"); // Remove placeholder for new rows
+            input.removeAttribute("placeholder");
         }
 
+        // Create remove button
         const button = document.createElement("button");
         button.classList.add("remove");
         button.innerText = "X";
-        setupRemoveButton(button, input, false); // Pass false for rows
+        setupRemoveButton(button, input, false);
 
         newRow.appendChild(label);
         newRow.appendChild(input);
@@ -49,14 +54,18 @@ document.addEventListener("DOMContentLoaded", function () {
         rowList.appendChild(newRow);
     });
 
+    // Add column button
     addColumnButton.addEventListener("click", function (event) {
         event.preventDefault();
         addedColumnCount++;
 
-        const numInputBoxes = (addedColumnCount === 1) ? 2 : 1; // Fix add column logic
+        // Add 2 input boxes if currently no column input boxes on page. Else, add 1 
+        const existingInputBoxes = columnContainer.querySelectorAll(".column-input");
+        const numInputBoxes = (existingInputBoxes.length === 0) ? 2 : 1;
 
+        // Loop to add input boxes
         for (let i = 0; i < numInputBoxes; i++) {
-            const inputContainer = document.createElement("div"); // Create a container for each input
+            const inputContainer = document.createElement("div");
             inputContainer.classList.add("column-input");
 
             const newInput = document.createElement("input");
@@ -67,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const button = document.createElement("button");
             button.classList.add("remove");
             button.innerText = "X";
-            setupRemoveButton(button, newInput, true); // Pass true for columns
+            setupRemoveButton(button, newInput, true);
 
             inputContainer.appendChild(newInput);
             inputContainer.appendChild(button);
@@ -75,11 +84,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Setup remove buttons for initial rows
+    // Reset button
+    resetButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        rowList.innerHTML = "";
+        columnContainer.innerHTML = "";
+        addedColumnCount = 0;
+
+        const defaultRows = ["S", "A", "B", "C"];
+        for (let i = 0; i < defaultRows.length; i++) {
+            const newRow = document.createElement("li");
+
+            const label = document.createElement("label");
+            label.setAttribute("for", `row-${i + 1}`);
+
+            const input = document.createElement("input");
+            input.setAttribute("type", "text");
+            input.setAttribute("name", `row-${i + 1}`);
+            input.setAttribute("placeholder", defaultRows[i]);
+
+            const button = document.createElement("button");
+            button.classList.add("remove");
+            button.innerText = "X";
+            setupRemoveButton(button, input, false);
+
+            newRow.appendChild(label);
+            newRow.appendChild(input);
+            newRow.appendChild(button);
+
+            rowList.appendChild(newRow);
+        }
+    });
+
+    // Initial rows
     const initialRows = rowList.querySelectorAll("li");
     initialRows.forEach((row) => {
         const input = row.querySelector("input");
         const button = row.querySelector("button");
-        setupRemoveButton(button, input, false); // Pass false for rows
+        setupRemoveButton(button, input, false);
     });
 });

@@ -1,4 +1,5 @@
-*{
+/* Global CSS styles */
+* {
     font-family: sans-serif;
     box-sizing: border-box;
     background-color: lightgray;
@@ -19,17 +20,20 @@ ul {
     min-height: 5px;
 }
 
+
 li {
     display: flex;
     align-items: center;
     margin: 10px 0;
 }
 
+/* Main title style */
 h1.title {
-font-size: 48px;
-text-align: center;
+    font-size: 48px;
+    text-align: center;
 }
 
+/* Heading styles */
 h4 {
     margin: 30px 0px 0px 0px;
 }
@@ -38,10 +42,12 @@ h4.rows {
     margin-top: 0;
 }
 
+/* Input box styles */
 input {
     border: 2px solid black;
 }
 
+/* Column input style */
 input.column {
     margin: 10px 0px 15px 0px;
 }
@@ -51,18 +57,25 @@ input.column {
     margin: 8px 0px 16px 0px;
 }
 
+/* Column input container style */
 .column-input {
-    display: inline-block; /* Set the display to inline-block to align horizontally */
-    vertical-align: top; /* Align the inputs at the top of the container */
-    margin-right: 10px; /* Add some spacing between column inputs */
+    display: inline-block; /* Aligns input boxes horizontally */
+    vertical-align: top; 
+    margin-right: -10px; 
 }
 
+.tier-row {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
 
-/* buttons */
+/* Button styles */
 button {
     color: black;
     border: 1px solid black;
 }
+
 button:hover {
     border-color: white;
     color: white;
@@ -77,17 +90,12 @@ button.remove {
     margin-right: 20px;
 }
 
-.tier-row {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-}
-
 button.add-row {
     background-color: green;
     padding: 5px 10px;
     font-weight: 500;
 }
+
 button.add-column {
     background-color: green;
     padding: 5px 10px;
