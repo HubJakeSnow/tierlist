@@ -12,6 +12,7 @@ html, body {
 
 fieldset {
     position: relative;
+    border: 3px solid black;
 }
 
 ul {
