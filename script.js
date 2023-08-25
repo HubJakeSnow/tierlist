@@ -5,19 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const addColumnButton = document.querySelector(".add-column");
     const resetButton = document.querySelector(".reset");
 
-    // Initialize row and column counts
+    // Start row and column counts
     let currentRowNumber = 4;
-    let addedColumnCount = 0;
-
-    function getNextLabel() {
-        return String.fromCharCode(65 + addedColumnCount);
-    }
+    let columnCount = 0;
 
     function setupRemoveButton(button, input, isColumn) {
         button.addEventListener("click", function () {
             input.parentElement.remove();
             if (isColumn) {
-                addedColumnCount--;
+                columnCount--;
             }
         });
     }
@@ -36,12 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const input = document.createElement("input");
         input.setAttribute("type", "text");
         input.setAttribute("name", `row-${currentRowNumber}`);
-        input.setAttribute("placeholder", getNextLabel());
-        if (currentRowNumber > 4) {
-            input.removeAttribute("placeholder");
-        }
-
-        // Create remove button
+   
+        // Create new remove button
         const button = document.createElement("button");
         button.classList.add("remove");
         button.innerText = "X";
@@ -57,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add column button
     addColumnButton.addEventListener("click", function (event) {
         event.preventDefault();
-        addedColumnCount++;
+        columnCount++;
 
         // Add 2 input boxes if currently no column input boxes on page. Else, add 1 
         const existingInputBoxes = columnContainer.querySelectorAll(".column-input");
@@ -70,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const newInput = document.createElement("input");
             newInput.setAttribute("type", "text");
-            newInput.setAttribute("name", `column-${addedColumnCount}`);
+            newInput.setAttribute("name", `column-${columnCount}`);
             newInput.classList.add("column");
 
             const button = document.createElement("button");
@@ -89,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         rowList.innerHTML = "";
         columnContainer.innerHTML = "";
-        addedColumnCount = 0;
+        columnCount = 0;
 
         const defaultRows = ["S", "A", "B", "C"];
         for (let i = 0; i < defaultRows.length; i++) {
